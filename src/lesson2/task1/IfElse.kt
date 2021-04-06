@@ -4,7 +4,6 @@ package lesson2.task1
 
 import lesson1.task1.discriminant
 import kotlin.math.max
-import kotlin.math.pow
 import kotlin.math.sqrt
 
 /**
@@ -129,6 +128,10 @@ fun rookOrBishopThreatens(
  * Если такой треугольник не существует, вернуть -1.
  */
 fun triangleKind(a: Double, b: Double, c: Double): Int {
+    when {
+        (a > b + c) || (b > a + c) || (c > a + b) -> return -1
+    }
+
     return if (a > b)
         if (a > c)
             when {
