@@ -4,6 +4,7 @@ package lesson2.task1
 
 import lesson1.task1.discriminant
 import kotlin.math.max
+import kotlin.math.pow
 import kotlin.math.sqrt
 
 /**
@@ -72,11 +73,21 @@ fun ageDescription(age: Int): String = TODO()
  * и t3 часов — со скоростью v3 км/час.
  * Определить, за какое время он одолел первую половину пути?
  */
+//fun timeForHalfWay(
+//    t1: Double, v1: Double,
+//    t2: Double, v2: Double,
+//    t3: Double, v3: Double
+//): Double = TODO()
+
 fun timeForHalfWay(
     t1: Double, v1: Double,
     t2: Double, v2: Double,
     t3: Double, v3: Double
-): Double = TODO()
+): Double {
+    val lenght = t1 * v1 + t2 * v2 + t3 * v3
+    return lenght / 2
+
+}
 
 /**
  * Простая
@@ -117,7 +128,37 @@ fun rookOrBishopThreatens(
  * прямоугольным (вернуть 1) или тупоугольным (вернуть 2).
  * Если такой треугольник не существует, вернуть -1.
  */
-fun triangleKind(a: Double, b: Double, c: Double): Int = TODO()
+fun triangleKind(a: Double, b: Double, c: Double): Int {
+    return if (a > b)
+        if (a > c)
+            when {
+                a * a < (b * b + c * c) -> 0
+                a * a == (b * b + c * c) -> 1
+                a * a > (b * b + c * c) -> 2
+                else -> -1
+            }
+        else
+            when {
+                c * c < (b * b + a * a) -> 0
+                c * c == (b * b + a * a) -> 1
+                c * c > (b * b + a * a) -> 2
+                else -> -1
+            }
+    else if (b > c)
+        when {
+            b * b < (a * a + c * c) -> 0
+            b * b == (a * a + c * c) -> 1
+            b * b > (a * a + c * c) -> 2
+            else -> -1
+        }
+    else
+        when {
+            c * c < (b * b + a * a) -> 0
+            c * c == (b * b + a * a) -> 1
+            c * c > (b * b + a * a) -> 2
+            else -> -1
+        }
+}
 
 /**
  * Средняя
@@ -127,4 +168,13 @@ fun triangleKind(a: Double, b: Double, c: Double): Int = TODO()
  * Найти длину пересечения отрезков AB и CD.
  * Если пересечения нет, вернуть -1.
  */
-fun segmentLength(a: Int, b: Int, c: Int, d: Int): Int = TODO()
+fun segmentLength(a: Int, b: Int, c: Int, d: Int): Int {
+    return when {
+        a < c && a < d && b == c && b < d -> c - b
+        a > c && a < d && b > c && b < d -> b - a
+        a < c && a < d && b > c && b < d -> b - c
+        a > c && a < d && b > c && b > d -> d - a
+        a < c && a < d && b > c && b > d -> d - c
+        else -> -1
+    }
+}
