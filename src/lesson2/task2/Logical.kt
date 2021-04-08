@@ -60,58 +60,7 @@ fun circleInside(
  * Вернуть true, если кирпич пройдёт
  * assertTrue(brickPasses(3, 2, 1, 1, 2))
  */
-//fun brickPasses(a: Int, b: Int, c: Int, r: Int, s: Int): Boolean = TODO()
 fun brickPasses(a: Int, b: Int, c: Int, r: Int, s: Int): Boolean {
-    return when {
-        a <= r -> {
-            when {
-                b <= s -> true
-                c <= s -> true
-                else -> {
-                    when {
-                        a <= s -> when {
-                            b <= r -> true
-                            c <= r -> true
-                            else -> {
-                                when {
-                                    b <= r -> when {
-                                        a <= s -> true
-                                        c <= s -> true
-                                        else -> {
-                                            when {
-//                                              не понимаю почему тут не проходит проверка по значениям a = 3, b = 2, c = 1, r = 1, s = 2
-                                                b <= s -> when {
-                                                    a <= r -> true
-                                                    c <= r -> true
-                                                    else -> when {
-                                                        c <= r -> when {
-                                                            a <= s -> true
-                                                            b <= s -> true
-                                                            else -> when {
-                                                                c <= s -> when {
-                                                                    a <= r -> true
-                                                                    b <= r -> true
-                                                                    else -> false
-                                                                }
-                                                                else -> false
-                                                            }
-                                                        }
-                                                        else -> false
-                                                    }
-                                                }
-                                                else -> false
-                                            }
-                                        }
-                                    }
-                                    else -> false
-                                }
-                            }
-                        }
-                        else -> false
-                    }
-                }
-            }
-        }
-        else -> false
-    }
+    return (a <= r && ((b <= s) || (c <= s))) || (b <= r && ((a <= s) || (c <= s))) || (c <= r && ((a <= s) || (b <= s))) ||
+            (a <= s && ((b <= r) || (c <= r))) || (b <= s && ((a <= r) || (c <= r))) || (c <= s && ((a <= r) || (b <= r)))
 }
