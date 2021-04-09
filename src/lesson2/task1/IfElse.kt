@@ -63,7 +63,18 @@ fun minBiRoot(a: Double, b: Double, c: Double): Double {
  * Мой возраст. Для заданного 0 < n < 200, рассматриваемого как возраст человека,
  * вернуть строку вида: «21 год», «32 года», «12 лет».
  */
-fun ageDescription(age: Int): String = TODO()
+fun ageDescription(age: Int): String {
+    return when (age) {
+        0, in 5..20, in 25..30, in 35..40, in 45..50, in 55..60, in 65..70, in 75..80, in 85..90, in 95..100,
+        in 105..120, in 125..130, in 135..140, in 145..150, in 155..160, in 165..70, in 175..180, in 185..190,
+        in 195..200 -> "$age лет"
+        1, 21, 31, 41, 51, 61, 71, 81, 91, 101, 121, 131, 141, 151, 161, 171, 181, 191 -> "$age год"
+        in 2..4, in 22..24, in 32..34, in 42..44, in 52..54, in 62..64, in 72..74, in 82..84, in 92..94,
+        in 102..104, in 122..124, in 132..134, in 142..144, in 152..154, in 162..164, in 172..174, in 182..184,
+        in 192..194 -> "$age года"
+        else -> "0"
+    }
+}
 
 /**
  * Простая
@@ -72,20 +83,18 @@ fun ageDescription(age: Int): String = TODO()
  * и t3 часов — со скоростью v3 км/час.
  * Определить, за какое время он одолел первую половину пути?
  */
-//fun timeForHalfWay(
-//    t1: Double, v1: Double,
-//    t2: Double, v2: Double,
-//    t3: Double, v3: Double
-//): Double = TODO()
-
 fun timeForHalfWay(
     t1: Double, v1: Double,
     t2: Double, v2: Double,
     t3: Double, v3: Double
 ): Double {
-    val lenght = t1 * v1 + t2 * v2 + t3 * v3
-    return lenght / 2
-
+    val halfPath: Double = (t1 * v1 + t2 * v2 + t3 * v3) / 2
+    return when {
+        t1 * v1 >= halfPath -> (halfPath / v1)
+        t2 * v2 + t1 * v1 >= halfPath -> (t1 + (halfPath - t1 * v1) / v2)
+        t3 * v3 + t2 * v2 + t1 * v1 >= halfPath -> (t1 + t2 + (halfPath - t1 * v1 - t2 * v2) / v3)
+        else -> -1.0
+    }
 }
 
 /**
