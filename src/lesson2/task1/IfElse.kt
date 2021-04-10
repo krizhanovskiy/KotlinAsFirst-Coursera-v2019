@@ -66,7 +66,7 @@ fun minBiRoot(a: Double, b: Double, c: Double): Double {
 fun ageDescription(age: Int): String {
     return when (age) {
         0, in 5..20, in 25..30, in 35..40, in 45..50, in 55..60, in 65..70, in 75..80, in 85..90, in 95..100,
-        in 105..120, in 125..130, in 135..140, in 145..150, in 155..160, in 165..70, in 175..180, in 185..190,
+        in 105..120, in 125..130, in 135..140, in 145..150, in 155..160, in 165..170, in 175..180, in 185..190,
         in 195..200 -> "$age лет"
         1, 21, 31, 41, 51, 61, 71, 81, 91, 101, 121, 131, 141, 151, 161, 171, 181, 191 -> "$age год"
         in 2..4, in 22..24, in 32..34, in 42..44, in 52..54, in 62..64, in 72..74, in 82..84, in 92..94,
@@ -106,11 +106,6 @@ fun timeForHalfWay(
  * и 3, если угроза от обеих ладей.
  * Считать, что ладьи не могут загораживать друг друга
  */
-//fun whichRookThreatens(
-//    kingX: Int, kingY: Int,
-//    rookX1: Int, rookY1: Int,
-//    rookX2: Int, rookY2: Int
-//): Int = TODO()
 fun whichRookThreatens(
     kingX: Int, kingY: Int,
     rookX1: Int, rookY1: Int,
