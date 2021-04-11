@@ -67,7 +67,19 @@ fun digitCountInNumber(n: Int, m: Int): Int =
  *
  * Использовать операции со строками в этой задаче запрещается.
  */
-fun digitNumber(n: Int): Int = TODO()
+//fun digitNumber(n: Int): Int = TODO()
+fun digitNumber(n: Int): Int {
+    var m = n
+    var count: Int = 0
+    if (m == 0) return 1
+    else {
+        while (m > 0) {
+            m /= 10
+            count++
+        }
+        return count
+    }
+}
 
 /**
  * Простая
@@ -208,3 +220,4 @@ fun squareSequenceDigit(n: Int): Int = TODO()
  * Использовать операции со строками в этой задаче запрещается.
  */
 fun fibSequenceDigit(n: Int): Int = TODO()
+
