@@ -2,7 +2,7 @@
 
 package lesson3.task1
 
-import kotlin.math.sqrt
+import kotlin.math.*
 
 /**
  * Пример
@@ -197,7 +197,17 @@ fun isPalindrome(n: Int): Boolean = TODO()
  *
  * Использовать операции со строками в этой задаче запрещается.
  */
-fun hasDifferentDigits(n: Int): Boolean = TODO()
+fun hasDifferentDigits(n: Int): Boolean {
+    var m = n
+    var flag = false
+    if (m < 10) return flag
+    while (m / 10 != 0) {
+        if (m % 10 == m / 10 % 10) flag = false
+        else return true
+        m /= 10
+    }
+    return flag
+}
 
 /**
  * Сложная
