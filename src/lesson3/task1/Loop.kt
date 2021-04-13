@@ -67,7 +67,6 @@ fun digitCountInNumber(n: Int, m: Int): Int =
  *
  * Использовать операции со строками в этой задаче запрещается.
  */
-//fun digitNumber(n: Int): Int = TODO()
 fun digitNumber(n: Int): Int {
     var m = n
     var count: Int = 0
@@ -176,7 +175,18 @@ fun cos(x: Double, eps: Double): Double = TODO()
  *
  * Использовать операции со строками в этой задаче запрещается.
  */
-fun revert(n: Int): Int = TODO()
+//fun revert(n: Int): Int = TODO()
+fun revert(n: Int): Int {
+    var m = n
+    var newN: Int = 0
+    if (m < 10) return m
+    while (m / 10 != 0) {
+        newN = newN * 10 + m % 10
+        m /= 10
+    }
+    newN = newN * 10 + m % 10
+    return newN
+}
 
 /**
  * Средняя
