@@ -187,29 +187,7 @@ fun revert(n: Int): Int = TODO()
  *
  * Использовать операции со строками в этой задаче запрещается.
  */
-//fun isPalindrome(n: Int): Boolean = TODO()
 fun isPalindrome(n: Int): Boolean {
-//    var m = n
-//    var flag = false
-//    while (m / 10 != 0) {
-////      получаю последний символ в числе
-//        var lastNumber: Int = m % 10
-//        var firstNumber: Int = m
-//        var newNumber: Int = 0
-////      получаю первый символ в числе
-//        while (firstNumber / 10 != 0) {
-////          получение нового числа для проверки
-//            if (firstNumber / 100 != 0) newNumber = newNumber + firstNumber % 10
-//            firstNumber /= 10
-//        }
-////      сравниваю первый и последний символ
-//        if (firstNumber == lastNumber) flag = true
-//        else return false
-////      получение нового числа без первой и последней цифры
-//
-//        m = newNumber
-//    }
-//    return flag
     var m = n
     var newN: Int = 0
     if (m < 10) return true
