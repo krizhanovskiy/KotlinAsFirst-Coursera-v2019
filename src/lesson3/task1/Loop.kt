@@ -68,7 +68,7 @@ fun digitCountInNumber(n: Int, m: Int): Int =
  * Использовать операции со строками в этой задаче запрещается.
  */
 fun digitNumber(n: Int): Int {
-    var m = n
+    var m = abs(n)
     var count: Int = 0
     if (m == 0) return 1
     else {
@@ -175,7 +175,6 @@ fun cos(x: Double, eps: Double): Double = TODO()
  *
  * Использовать операции со строками в этой задаче запрещается.
  */
-//fun revert(n: Int): Int = TODO()
 fun revert(n: Int): Int {
     var m = n
     var newN: Int = 0
