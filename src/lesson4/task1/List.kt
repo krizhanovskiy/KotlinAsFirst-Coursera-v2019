@@ -3,6 +3,7 @@
 package lesson4.task1
 
 import lesson1.task1.discriminant
+import kotlin.math.pow
 import kotlin.math.sqrt
 
 /**
@@ -122,7 +123,15 @@ fun abs(v: List<Double>): Double = TODO()
  *
  * Рассчитать среднее арифметическое элементов списка list. Вернуть 0.0, если список пуст
  */
-fun mean(list: List<Double>): Double = TODO()
+//fun mean(list: List<Double>): Double = TODO()
+fun mean(list: List<Double>): Double {
+    var sumOfSquaresOfNumbers: Double = 0.0
+    if (list.size == 0) return 0.0
+    else {
+        for (i in list) sumOfSquaresOfNumbers += i
+        return sumOfSquaresOfNumbers / list.size
+    }
+}
 
 /**
  * Средняя
