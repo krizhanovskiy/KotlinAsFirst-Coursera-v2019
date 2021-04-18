@@ -208,6 +208,7 @@ fun isPalindrome(n: Int): Boolean {
     return n == newN
 }
 
+
 /**
  * Средняя
  *
@@ -237,7 +238,39 @@ fun hasDifferentDigits(n: Int): Boolean {
  *
  * Использовать операции со строками в этой задаче запрещается.
  */
-fun squareSequenceDigit(n: Int): Int = TODO()
+
+/**
+ * 1 2 3 4 5 6 7 8 9 10
+ * 1 4 9 16 25 36 49 64 81 100
+ * !Внимание! Т.к. использовали реверс для строк, то появилась новая беда, если число равно 100, 200 и тд. Реверс
+ * возвращает вместо 001, 1. Получается либо от реверса надо отказываться, либо как то обрабатывать эти числа
+ */
+
+//fun squareSequenceDigit(n: Int): Int = TODO()
+fun squareSequenceDigit(n: Int): Int {
+    var count: Int = 1
+    var wholeNumber: Int = 1
+    var revertSquareWholeNumber: Int = 0
+    while (count <= n) {
+        revertSquareWholeNumber = revert(wholeNumber * wholeNumber)
+        if (revertSquareWholeNumber / 10 == 0) {
+            if (count == n) return revertSquareWholeNumber
+            else count += 1
+        } else {
+            do {
+                if (count == n) return if (revertSquareWholeNumber / 10 > 0) revertSquareWholeNumber % 10
+                else revertSquareWholeNumber
+                else {
+                    revertSquareWholeNumber /= 10
+                }
+                count += 1
+            } while (revertSquareWholeNumber > 0)
+
+        }
+        wholeNumber += 1
+    }
+    return -1
+}
 
 /**
  * Сложная
