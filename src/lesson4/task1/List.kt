@@ -3,8 +3,8 @@
 package lesson4.task1
 
 import lesson1.task1.discriminant
-import kotlin.math.pow
-import kotlin.math.sqrt
+import kotlin.math.*
+import kotlin.text.*
 
 /**
  * Пример
@@ -117,11 +117,11 @@ fun buildSumExample(list: List<Int>) = list.joinToString(separator = " + ", post
  * Модуль пустого вектора считать равным 0.0.
  */
 fun abs(v: List<Double>): Double {
-    var sumOfSquaresOfNumbers: Double = 0.0
-    if (v.size == 0) return 0.0
+    var sumOfSquaresOfNumbers = 0.0
+    return if (v.isEmpty()) 0.0
     else {
         for (i in v) sumOfSquaresOfNumbers += i.pow(2)
-        return sqrt(sumOfSquaresOfNumbers)
+        sqrt(sumOfSquaresOfNumbers)
     }
 }
 
@@ -131,11 +131,11 @@ fun abs(v: List<Double>): Double {
  * Рассчитать среднее арифметическое элементов списка list. Вернуть 0.0, если список пуст
  */
 fun mean(list: List<Double>): Double {
-    var sumOfSquaresOfNumbers: Double = 0.0
-    if (list.size == 0) return 0.0
+    var sumOfSquaresOfNumbers = 0.0
+    return if (list.isEmpty()) 0.0
     else {
         for (i in list) sumOfSquaresOfNumbers += i
-        return sumOfSquaresOfNumbers / list.size
+        sumOfSquaresOfNumbers / list.size
     }
 }
 
@@ -148,11 +148,10 @@ fun mean(list: List<Double>): Double {
  * Обратите внимание, что данная функция должна изменять содержание списка list, а не его копии.
  */
 fun center(list: MutableList<Double>): MutableList<Double> {
-    var sumOfSquaresOfNumbers: Double = 0.0
-    var avrSumOfSquaresOfNumbers: Double = 0.0
+    var sumOfSquaresOfNumbers = 0.0
 
     for (i in list) sumOfSquaresOfNumbers += i
-    avrSumOfSquaresOfNumbers = sumOfSquaresOfNumbers / list.size
+    val avrSumOfSquaresOfNumbers: Double = sumOfSquaresOfNumbers / list.size
 
     if (list.size == 0) return list
     else for ((i, element) in list.withIndex()) list[i] = element - avrSumOfSquaresOfNumbers
@@ -166,16 +165,15 @@ fun center(list: MutableList<Double>): MutableList<Double> {
  * представленные в виде списков a и b. Скалярное произведение считать по формуле:
  * C = a1b1 + a2b2 + ... + aNbN. Произведение пустых векторов считать равным 0.
  */
-//fun times(a: List<Int>, b: List<Int>): Int = TODO()
 fun times(a: List<Int>, b: List<Int>): Int {
-    var C: Int = 0
-    var i: Int = 0
-    if (a.size == 0 || b.size == 0) return 0
+    var c = 0
+    var i = 0
+    if (a.isEmpty() || b.isEmpty()) return 0
     while (i < a.size) {
-        C += a[i] * b[i]
+        c += a[i] * b[i]
         i += 1
     }
-    return C
+    return c
 }
 
 /**
@@ -261,7 +259,54 @@ fun decimal(digits: List<Int>, base: Int): Int = TODO()
  * Использовать функции стандартной библиотеки, напрямую и полностью решающие данную задачу
  * (например, str.toInt(base)), запрещается.
  */
-fun decimalFromString(str: String, base: Int): Int = TODO()
+//fun decimalFromString(str: String, base: Int): Int = TODO()
+fun decimalFromString(str: String, base: Int): Int {
+    var number = 0
+    val letter = listOf(
+        "a",
+        "b",
+        "c",
+        "d",
+        "e",
+        "f",
+        "g",
+        "h",
+        "i",
+        "j",
+        "k",
+        "l",
+        "m",
+        "n",
+        "o",
+        "p",
+        "q",
+        "r",
+        "s",
+        "t",
+        "u",
+        "v",
+        "x",
+        "y",
+        "z"
+    )
+
+    var iDegree = str.length
+
+    for (i in 0..str.length - 1) {
+        if (str[i].toString().toIntOrNull() != null) {
+            number += str[i].toString().toInt() * base.toDouble().pow(iDegree - 1).toInt()
+        } else {
+            for ((j, element) in letter.withIndex())
+                if (element == str[i].toString()) {
+                    number += (j + 10) * base.toDouble().pow(iDegree - 1).toInt()
+                    continue
+                }
+        }
+        iDegree -= 1
+    }
+    return number
+}
+
 
 /**
  * Сложная
