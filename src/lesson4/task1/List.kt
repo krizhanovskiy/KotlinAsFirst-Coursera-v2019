@@ -261,7 +261,7 @@ fun decimal(digits: List<Int>, base: Int): Int = TODO()
  */
 //fun decimalFromString(str: String, base: Int): Int = TODO()
 fun decimalFromString(str: String, base: Int): Int {
-    var number = 0
+    var number = 0.0
     val letter = listOf(
         "a",
         "b",
@@ -294,17 +294,23 @@ fun decimalFromString(str: String, base: Int): Int {
 
     for (i in 0..str.length - 1) {
         if (str[i].toString().toIntOrNull() != null) {
-            number += str[i].toString().toInt() * base.toDouble().pow(iDegree - 1).toInt()
+            number += str[i].toString().toInt() * base.toDouble().pow(iDegree - 1)
         } else {
-            for ((j, element) in letter.withIndex())
-                if (element == str[i].toString()) {
-                    number += (j + 10) * base.toDouble().pow(iDegree - 1).toInt()
-                    continue
-                }
+//        {
+//            for ((j, element) in letter.withIndex())
+//                if (element == str[i].toString()) {
+//                    number += (j + 10) * base.toDouble().pow(iDegree - 1).toInt()
+//                    continue
+//                }
+            var tmp: Int = letter.indexOf(str[i].toString()).toInt() + 10
+//            number += (letter.indexOf(str[i].toString()).toInt() + 10) * base.toDouble().pow(iDegree - 1).toInt()
+            number += tmp * base.toDouble().pow(iDegree - 1)
+//            (j + 10) * base.toDouble().pow(iDegree - 1).toInt()
+//        }
         }
         iDegree -= 1
     }
-    return number
+    return number.toInt()
 }
 
 
