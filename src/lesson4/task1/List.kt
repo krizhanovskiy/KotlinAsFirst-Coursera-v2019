@@ -289,14 +289,13 @@ fun decimalFromString(str: String, base: Int): Int {
         "y",
         "z"
     )
-
     var iDegree = str.length
 
     for (i in 0..str.length - 1) {
         if (str[i].toString().toIntOrNull() != null) {
             number += str[i].toString().toInt() * base.toDouble().pow(iDegree - 1)
         } else {
-            number += (letter.indexOf(str[i].toString()).toInt() + 10) * base.toDouble().pow(iDegree - 1).toInt()
+            number += (letter.indexOf(str[i].toString()).toInt() + 10) * base.toDouble().pow(iDegree - 1)
         }
         iDegree -= 1
     }
@@ -312,7 +311,12 @@ fun decimalFromString(str: String, base: Int): Int {
  * 90 = XC, 100 = C, 400 = CD, 500 = D, 900 = CM, 1000 = M.
  * Например: 23 = XXIII, 44 = XLIV, 100 = C
  */
-fun roman(n: Int): String = TODO()
+//fun roman(n: Int): String = TODO()
+fun roman(n: Int): String {
+    var arabicToRoman = ""
+
+    return arabicToRoman
+}
 
 /**
  * Очень сложная
