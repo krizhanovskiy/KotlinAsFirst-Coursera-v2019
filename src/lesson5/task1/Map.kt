@@ -157,7 +157,6 @@ fun whoAreInBoth(a: List<String>, b: List<String>): List<String> = TODO()
  *     mapOf("Emergency" to "911", "Police" to "02")
  *   ) -> mapOf("Emergency" to "112, 911", "Police" to "02")
  */
-//fun mergePhoneBooks(mapA: Map<String, String>, mapB: Map<String, String>): Map<String, String> = TODO()
 fun mergePhoneBooks(mapA: Map<String, String>, mapB: Map<String, String>): Map<String, String> {
     var totalMap = mutableMapOf<String, String>()
     for ((keyA, valueA) in mapA) {
@@ -187,6 +186,13 @@ fun mergePhoneBooks(mapA: Map<String, String>, mapB: Map<String, String>): Map<S
  *     -> mapOf("MSFT" to 150.0, "NFLX" to 40.0)
  */
 fun averageStockPrice(stockPrices: List<Pair<String, Double>>): Map<String, Double> = TODO()
+//fun averageStockPrice(stockPrices: List<Pair<String, Double>>): Map<String, Double> {
+//    var averageMap = mutableMapOf<String, Double>()
+//
+//
+//
+//    return averageMap.toMap()
+//}
 
 /**
  * Средняя
@@ -214,7 +220,15 @@ fun findCheapestStuff(stuff: Map<String, Pair<String, Double>>, kind: String): S
  * Например:
  *   canBuildFrom(listOf('a', 'b', 'o'), "baobab") -> true
  */
-fun canBuildFrom(chars: List<Char>, word: String): Boolean = TODO()
+fun canBuildFrom(chars: List<Char>, word: String): Boolean {
+    var flag: Boolean = false
+
+    for (char in word) {
+        flag = chars.contains(char)
+    }
+
+    return flag
+}
 
 /**
  * Средняя
