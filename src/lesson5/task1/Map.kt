@@ -220,8 +220,13 @@ fun findCheapestStuff(stuff: Map<String, Pair<String, Double>>, kind: String): S
  * Например:
  *   canBuildFrom(listOf('a', 'b', 'o'), "baobab") -> true
  */
+//fun canBuildFrom(chars: List<Char>, word: String): Boolean = TODO()
 fun canBuildFrom(chars: List<Char>, word: String): Boolean {
     var flag: Boolean = false
+
+    if (chars.isEmpty() && word.isEmpty()) return true
+    if (chars.isEmpty()) return false
+
 
     for (char in word) {
         flag = chars.contains(char)
