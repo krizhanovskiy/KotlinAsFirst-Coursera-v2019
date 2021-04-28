@@ -226,6 +226,7 @@ fun canBuildFrom(chars: List<Char>, word: String): Boolean {
 
     if (chars.isEmpty() && word.isEmpty()) return true
     if (chars.isEmpty()) return false
+    if (word.isEmpty()) return true
 
 
     for (char in word) {
