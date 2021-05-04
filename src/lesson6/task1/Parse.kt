@@ -2,6 +2,8 @@
 
 package lesson6.task1
 
+import lesson8.task1.findNearestCirclePair
+
 /**
  * Пример
  *
@@ -69,7 +71,52 @@ fun main() {
  * Обратите внимание: некорректная с точки зрения календаря дата (например, 30.02.2009) считается неверными
  * входными данными.
  */
-fun dateStrToDigit(str: String): String = TODO()
+fun dateStrToDigit(str: String): String {
+    val parts = str.split(" ")
+    var i: Int = 0
+    var day: String = ""
+    var month: String = ""
+    var year: String = ""
+
+    val dayInMonth = mapOf(
+        "января" to Pair("31", "01"),
+        "февраля" to Pair("28", "02"),
+        "марта" to Pair("31", "03"),
+        "апреля" to Pair("30", "04"),
+        "мая" to Pair("31", "05"),
+        "июня" to Pair("30", "06"),
+        "июля" to Pair("31", "07"),
+        "августа" to Pair("31", "08"),
+        "сентября" to Pair("30", "09"),
+        "октября" to Pair("31", "10"),
+        "ноября" to Pair("30", "11"),
+        "декабря" to Pair("31", "12")
+    )
+
+    for (part in parts) {
+        when (i) {
+            0 -> day = part
+            1 -> month = part
+            2 -> year = part
+        }
+        i += 1
+    }
+
+    if (day != "" && month != "" && year != "") {
+        for ((key, pair) in dayInMonth)
+            if (year.toInt() % 4 != 0 || year.toInt() % 100 == 0 && year.toInt() % 400 != 0) {
+                if (key == month && day.toInt() <= pair.first.toInt()) {
+                    if (day.toInt() < 10) return "0$day.${pair.second}.$year"
+                    else return "$day.${pair.second}.$year"
+                }
+            } else if (key == month && day.toInt() <= pair.first.toInt() + 1) {
+                if (day.toInt() < 10) return "0$day.${pair.second}.$year"
+                else return "$day.${pair.second}.$year"
+            }
+    } else return ""
+
+    return ""
+}
 
 /**
  * Средняя
