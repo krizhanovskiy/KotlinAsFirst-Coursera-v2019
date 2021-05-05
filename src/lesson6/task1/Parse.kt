@@ -104,7 +104,7 @@ fun dateStrToDigit(str: String): String {
 
     if (day != "" && month != "" && year != "") {
         for ((key, pair) in dayInMonth) {
-            if (year.toInt() > 10000) return ""
+            if (year.toInt() > 100000) return ""
             if (year.toInt() % 4 != 0 || year.toInt() % 100 == 0 && year.toInt() % 400 != 0) {
                 if (key == month && day.toInt() <= pair.first.toInt()) {
                     if (day.toInt() < 10) return "0${day.toInt().toString()}.${pair.second}.$year"
