@@ -44,6 +44,7 @@ class Tests {
         assertEquals("01.01.1", dateStrToDigit("01 января 1"))
         assertEquals("", dateStrToDigit("31 апреля 4"))
         assertEquals("29.02.4", dateStrToDigit("29 февраля 4"))
+        assertEquals("", dateStrToDigit("aaa aaaaaa aaa"))
     }
 
     @Test
@@ -58,6 +59,7 @@ class Tests {
         assertEquals("", dateDigitToStr("29.02.1993"))
         assertEquals("", dateDigitToStr("31.04.4"))
         assertEquals("29 февраля 4", dateDigitToStr("29.02.4"))
+        assertEquals("", dateDigitToStr("aaaaaaaaaaaaaaaaaaaaa aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa?(㴁妢U_y.v+X1]L7 P|(~GsA聰#\\?U9*={W~D_dD〨&Hw81\n"))
     }
 
     @Test
