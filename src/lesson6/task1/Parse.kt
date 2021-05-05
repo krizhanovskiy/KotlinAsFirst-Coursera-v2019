@@ -102,6 +102,8 @@ fun dateStrToDigit(str: String): String {
         i += 1
     }
 
+    if (year.length < 5) return ""
+
     if (day != "" && month != "" && year != "") {
         for ((key, pair) in dayInMonth) {
 //            if (year.toInt() > 1000000) return ""
@@ -161,6 +163,8 @@ fun dateDigitToStr(digital: String): String {
         }
         i += 1
     }
+
+    if (year.length < 5) return ""
 
     if (day != "" && month != "" && year != "" && day.toIntOrNull() != null && day.toIntOrNull() != null && year.toIntOrNull() != null) {
         for ((key, pair) in dayInMonth) {
