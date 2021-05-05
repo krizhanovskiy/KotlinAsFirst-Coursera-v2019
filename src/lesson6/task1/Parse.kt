@@ -131,7 +131,7 @@ fun dateStrToDigit(str: String): String {
  * входными данными.
  */
 fun dateDigitToStr(digital: String): String {
-    val parts = digital.split(" ")
+    val parts = digital.split(".")
     var i = 0
     var day = ""
     var month = ""
@@ -157,21 +157,22 @@ fun dateDigitToStr(digital: String): String {
             0 -> day = part
             1 -> month = part
             2 -> year = part
+            else -> return ""
         }
         i += 1
     }
 
-    if (day != "" && month != "" && year != "") {
+    if (day != "" && month != "" && year != "" && day.toIntOrNull() != null && day.toIntOrNull() != null && year.toIntOrNull() != null) {
         for ((key, pair) in dayInMonth) {
             if (year.toInt() > 100000) return ""
             if (year.toInt() % 4 != 0 || year.toInt() % 100 == 0 && year.toInt() % 400 != 0) {
-                if (key == month && day.toInt() <= pair.first.toInt()) {
-                    if (day.toInt() < 10) return "0${day.toInt().toString()}.${pair.second}.$year"
-                    else return "$day.${pair.second}.$year"
+                if (pair.second == month && day.toInt() <= pair.first.toInt()) {
+                    if (day.toInt() < 10) return "${day.toInt().toString()} $key $year"
+                    else return "$day $key $year"
                 }
-            } else if (key == month && day.toInt() <= pair.first.toInt() + 1) {
-                if (day.toInt() < 10) return "0${day.toInt().toString()}.${pair.second}.$year"
-                else return "$day.${pair.second}.$year"
+            } else if (pair.second == month && day.toInt() <= pair.first.toInt() + 1) {
+                if (day.toInt() < 10) return "${day.toInt().toString()} $key $year"
+                else return "$day $key $year"
             }
         }
     } else return ""
