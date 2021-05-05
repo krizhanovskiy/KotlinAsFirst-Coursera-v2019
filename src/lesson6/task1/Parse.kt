@@ -112,7 +112,7 @@ fun dateStrToDigit(str: String): String {
                     if (day.toInt() < 10) return "0${day.toInt().toString()}.${pair.second}.$year"
                     else return "$day.${pair.second}.$year"
                 }
-            } else if (key == month && day.toInt() <= pair.first.toInt() + 1) {
+            } else if (key == month && day.toInt() <= pair.first.toInt()) {
                 if (day.toInt() < 10) return "0${day.toInt().toString()}.${pair.second}.$year"
                 else return "$day.${pair.second}.$year"
             }
@@ -174,7 +174,7 @@ fun dateDigitToStr(digital: String): String {
                     if (day.toInt() < 10) return "${day.toInt().toString()} $key $year"
                     else return "$day $key $year"
                 }
-            } else if (pair.second == month && day.toInt() <= pair.first.toInt() + 1) {
+            } else if (pair.second == month && day.toInt() <= pair.first.toInt()) {
                 if (day.toInt() < 10) return "${day.toInt().toString()} $key $year"
                 else return "$day $key $year"
             }
