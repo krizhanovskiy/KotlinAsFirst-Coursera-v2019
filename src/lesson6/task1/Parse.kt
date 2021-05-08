@@ -231,6 +231,8 @@ fun bestHighJump(jumps: String): Int {
     var tempMaximumHeight = -1
     var i = 0
 
+    if (attempts.count() == 1) return -1
+
     for (attempt in attempts) {
         if (attempt.toIntOrNull() != null && i == 0) {
             maximumHeight = attempt.toInt()
