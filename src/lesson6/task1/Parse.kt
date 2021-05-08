@@ -224,7 +224,38 @@ fun bestLongJump(jumps: String): Int = TODO()
  * При нарушении формата входной строки, а также в случае отсутствия удачных попыток,
  * вернуть -1.
  */
-fun bestHighJump(jumps: String): Int = TODO()
+//fun bestHighJump(jumps: String): Int = TODO()
+fun bestHighJump(jumps: String): Int {
+    var maximumHeight = -1
+    val attempts = jumps.split(" ")
+    var tempMaximumHeight = -1
+    var i = 0
+
+    for (attempt in attempts) {
+        if (attempt.toIntOrNull() != null && i == 0) {
+            maximumHeight = attempt.toInt()
+        }
+
+        if (attempt.toIntOrNull() != null) {
+            tempMaximumHeight = attempt.toInt()
+        }
+
+        if (attempt.toIntOrNull() == null) {
+            for (char in attempt) {
+                when (char) {
+                    '-' -> tempMaximumHeight = -1
+                    '%' -> tempMaximumHeight = -1
+                }
+            }
+            if (tempMaximumHeight > maximumHeight) maximumHeight = tempMaximumHeight
+        }
+
+
+        i += 1
+    }
+
+    return maximumHeight
+}
 
 /**
  * Сложная
