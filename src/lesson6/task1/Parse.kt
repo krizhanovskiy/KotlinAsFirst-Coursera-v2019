@@ -229,31 +229,27 @@ fun bestHighJump(jumps: String): Int {
     var maximumHeight = -1
     val attempts = jumps.split(" ")
     var tempMaximumHeight = -1
-    var i = 0
 
-    if (attempts.count() == 1) return -1
+//    if (attempts.count() == 1) return maximumHeight
 
     for (attempt in attempts) {
-        if (attempt.toIntOrNull() != null && i == 0) {
-            maximumHeight = attempt.toInt()
-        }
-
+//      Если текущее слово число число, то запоминаем его как максимальное
         if (attempt.toIntOrNull() != null) {
             tempMaximumHeight = attempt.toInt()
         }
 
+//      если текущее слово не число
         if (attempt.toIntOrNull() == null) {
             for (char in attempt) {
                 when (char) {
                     '-' -> tempMaximumHeight = -1
                     '%' -> tempMaximumHeight = -1
+                    '+' -> if (tempMaximumHeight > maximumHeight) maximumHeight = tempMaximumHeight
                 }
             }
-            if (tempMaximumHeight > maximumHeight) maximumHeight = tempMaximumHeight
+//            if (tempMaximumHeight > maximumHeight) maximumHeight = tempMaximumHeight
         }
 
-
-        i += 1
     }
 
     return maximumHeight
