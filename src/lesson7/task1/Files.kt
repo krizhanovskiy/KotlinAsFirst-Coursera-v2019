@@ -70,7 +70,69 @@ fun countSubstrings(inputName: String, substrings: List<String>): Map<String, In
  *
  */
 fun sibilants(inputName: String, outputName: String) {
-    TODO()
+    val outputStream = File(outputName).bufferedWriter()
+
+    var newLine = ""
+
+    for (line in File(inputName).readLines()) {
+        newLine = line
+
+        newLine = newLine.replace("жы", "жи")
+        newLine = newLine.replace("Жы", "Жи")
+        newLine = newLine.replace("жЫ", "жИ")
+        newLine = newLine.replace("ЖЫ", "ЖИ")
+
+        newLine = newLine.replace("шы", "ши")
+        newLine = newLine.replace("Шы", "Ши")
+        newLine = newLine.replace("шЫ", "шИ")
+        newLine = newLine.replace("ШЫ", "ШИ")
+
+        newLine = newLine.replace("чя", "ча")
+        newLine = newLine.replace("Чя", "Ча")
+        newLine = newLine.replace("чЯ", "чА")
+        newLine = newLine.replace("ЧЯ", "ЧА")
+
+        newLine = newLine.replace("щя", "ща")
+        newLine = newLine.replace("Щя", "Ща")
+        newLine = newLine.replace("щЯ", "щА")
+        newLine = newLine.replace("ЩЯ", "ЩА")
+
+        newLine = newLine.replace("чю", "чу")
+        newLine = newLine.replace("Чю", "Чу")
+        newLine = newLine.replace("чЮ", "чУ")
+        newLine = newLine.replace("ЧЮ", "ЧУ")
+
+        newLine = newLine.replace("щю", "щу")
+        newLine = newLine.replace("Щю", "Щу")
+        newLine = newLine.replace("щЮ", "щУ")
+        newLine = newLine.replace("ЩЮ", "ЩУ")
+
+        newLine = newLine.replace("жя", "жа")
+        newLine = newLine.replace("Жя", "Жа")
+        newLine = newLine.replace("жЯ", "жА")
+        newLine = newLine.replace("ЖЯ", "ЖА")
+
+        newLine = newLine.replace("шя", "ша")
+        newLine = newLine.replace("Шя", "Ша")
+        newLine = newLine.replace("шЯ", "шА")
+        newLine = newLine.replace("ШЯ", "ША")
+
+        newLine = newLine.replace("жю", "жу")
+        newLine = newLine.replace("Жю", "Жу")
+        newLine = newLine.replace("жЮ", "жУ")
+        newLine = newLine.replace("ЖЮ", "ЖУ")
+
+        newLine = newLine.replace("шю", "шу")
+        newLine = newLine.replace("Шю", "Шу")
+        newLine = newLine.replace("шЮ", "шУ")
+        newLine = newLine.replace("ШЮ", "ШУ")
+
+
+        outputStream.write(newLine)
+        outputStream.newLine()
+    }
+
+    outputStream.close()
 }
 
 /**
