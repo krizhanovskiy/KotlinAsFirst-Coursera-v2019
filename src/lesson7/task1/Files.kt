@@ -127,6 +127,11 @@ fun sibilants(inputName: String, outputName: String) {
         newLine = newLine.replace("шЮ", "шУ")
         newLine = newLine.replace("ШЮ", "ШУ")
 
+        newLine = newLine.replace("щы", "щи")
+        newLine = newLine.replace("Щы", "Щи")
+        newLine = newLine.replace("щЫ", "щИ")
+        newLine = newLine.replace("ЩЫ", "ЩИ")
+
 
         outputStream.write(newLine)
         outputStream.newLine()
